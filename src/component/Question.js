@@ -2,6 +2,7 @@ import React from "react";
 import './Question.css';
 
 function Question(props) {
+  const id = props.id;
   const question = props.question;
   const type = props.type;
   const correct_answer = props.correct_answer;
@@ -48,7 +49,7 @@ function Question(props) {
     <div className="quiz">
       <div className="num-question">
         <h2>QUESTION</h2>
-        <h2 className="number">0</h2>
+        <h2 className="number">{id}</h2>
       </div>
       <div className="question">
         <h1>{question}</h1>

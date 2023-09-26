@@ -17,11 +17,21 @@ function App() {
         <Login />
       </Card>
       <Card>
-        <Question 
+        <Question
+          id='1'
           type={data[0].type}
           question={data[0].question}
           correct_answer={data[0].correct_answer}
           incorrect_answers={data[0].incorrect_answers}
+        />
+      </Card>
+      <Card>
+        <Question
+          id='2'
+          type={data[1].type}
+          question={data[1].question}
+          correct_answer={data[1].correct_answer}
+          incorrect_answers={data[1].incorrect_answers}
         />
       </Card>
     </div>
