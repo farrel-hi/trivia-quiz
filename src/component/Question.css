@@ -1,0 +1,16 @@
+.question{
+  min-height: 20em;
+
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.num-question{
+  display: flex;
+}
+
+
+.number{
+  padding-left: 10px;
+}

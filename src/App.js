@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import MainTitle from './component/MainTitle';
+import Card from './component/Card';
+import Login from './component/Login';
+import Question from './component/Question';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Card>
+        <MainTitle />
+      </Card>
+      <Card>
+        <Login />
+      </Card>
+      <Card>
+        <Question />
+      </Card>
     </div>
   );
 }
 
 export default App;
+
+// How to show/hide Component onClick in React:
+// https://bobbyhadz.com/blog/react-onclick-show-component
+// How to add Login/Auth to your React App:
+// https://www.youtube.com/watch?v=wr3VmbZdVA4
