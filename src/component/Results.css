@@ -1,0 +1,7 @@
+.results-container{
+  padding: 30px;
+}
+
+.results-container > * {
+  margin-bottom: 10px;
+}

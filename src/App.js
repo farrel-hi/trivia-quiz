@@ -3,7 +3,7 @@ import './App.css';
 import MainTitle from './component/MainTitle';
 import Card from './component/Card';
 import Login from './component/Login';
-import Question from './component/Question';
+import Results from './component/Results';
 import qData from './assets/question.json'
 import AllQuestion from './component/AllQuestion';
 
@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       {mainIsShown &&
         <Card>
-          <MainTitle onHideThisSection={handleHide} onShowNextSection = {handleShown} status={mainIsShown} />
+          <MainTitle onHideThisSection={handleHide} onShowNextSection={handleShown} status={mainIsShown} />
         </Card>
       }
 
@@ -34,9 +34,11 @@ function App() {
         <Login />
       </Card> */}
 
-      {questionShown &&  <AllQuestion data={data} />}
+      {questionShown && <AllQuestion data={data} />}
 
-     
+      <Card>
+        <Results />
+      </Card>
     </div>
   );
 }
