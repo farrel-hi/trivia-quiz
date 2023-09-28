@@ -5,7 +5,16 @@ import Card from "./Card";
 
 function AllQuestion(props) {
   const [showQuestion, setShowQuestion] = useState(0);
+  const [answerArr, setAnswerArr] = useState([]);
   const data = props.data
+
+  const handleAnswers = answer =>{
+    console.log(answer);
+    setAnswerArr({
+      ...answerArr,
+      answer
+    })
+  }
 
   function QuestionGenerator(property){
     const qNum = property.questionNumber
@@ -17,6 +26,7 @@ function AllQuestion(props) {
           question={data[qNum].question}
           correct_answer={data[qNum].correct_answer}
           incorrect_answers={data[qNum].incorrect_answers}
+          onHandleAnswers = {handleAnswers}
         />
       </Card>
     );
