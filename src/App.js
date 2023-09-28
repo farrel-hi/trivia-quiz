@@ -14,6 +14,8 @@ function App() {
   const [resultsShown, setResultsShown] = useState(false);
   const [loginShown, setLoginShown] = useState(false);
 
+  const [answerData,setAnswerData] = useState([]);
+
   const handleHide = shownStatus => {
     setMainIsShown(shownStatus);
   };
@@ -26,6 +28,15 @@ function App() {
   const handleLogin = shownStatus => {
     setLoginShown(shownStatus);
   };
+  const handleAnswersData = data =>{
+    const transferData = [
+      ...answerData,
+      data
+    ]
+    setAnswerData(transferData);
+    console.log('In App');
+    console.log(answerData);
+  }
 
   return (
     <div className="App">
@@ -50,13 +61,16 @@ function App() {
         </Card>
       }
 
-      {/* <Card>
-        <Login />
-      </Card> */}
-
       {questionShown &&
-        <AllQuestion data={data} onQuizFinish={handleResults} onShowNextSection={handleShown} />
+        <AllQuestion 
+        data={data} 
+        onQuizFinish={handleResults} 
+        onShowNextSection={handleShown} 
+        onUpdateAnswers={handleAnswersData}
+        />
       }
+
+
       {resultsShown &&
         <Card>
           <Results

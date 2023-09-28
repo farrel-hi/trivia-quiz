@@ -5,15 +5,17 @@ import Card from "./Card";
 
 function AllQuestion(props) {
   const [showQuestion, setShowQuestion] = useState(0);
-  const [answerArr, setAnswerArr] = useState([]);
+  // const [answerArr, setAnswerArr] = useState([]);
   const data = props.data
 
   const handleAnswers = answer => {
     console.log(answer);
-    setAnswerArr({
-      ...answerArr,
-      answer
-    })
+    const updateAnswer = {...answer};
+    // setAnswerArr({
+    //   ...answerArr,
+    //   answer
+    // })
+    props.onUpdateAnswers(updateAnswer)
   }
 
   function QuestionGenerator(property) {
@@ -85,9 +87,6 @@ function AllQuestion(props) {
           <button className="prev-next-btn" onClick={saveSubmitStatus}>Submit</button>
         }
       </div>
-
-      {/* <QuestionGenerator questionNumber = {1} /> */}
-
     </div>
   );
 }
