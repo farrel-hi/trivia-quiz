@@ -9,6 +9,10 @@ function MainTitle(props) {
     props.onHideThisSection(false);
     props.onShowNextSection(true);
   }
+  function showSectionLogin(){
+    props.onHideThisSection(false);
+    props.onShowLogin(true);
+  }
 
   return (
     <div className="title">
@@ -21,7 +25,7 @@ function MainTitle(props) {
       </div>
       <div className="btn-option">
         <button className="btn-start" onClick={nextSectionShown}>Start (as Guest)</button>
-        <button className="btn-start">Login</button>
+        <button className="btn-start" onClick={showSectionLogin}>Login</button>
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ function App() {
   const [mainIsShown, setMainIsShown] = useState(true);
   const [questionShown, setQuestionShown] = useState(false);
   const [resultsShown, setResultsShown] = useState(false);
+  const [loginShown, setLoginShown] = useState(false);
 
   const handleHide = shownStatus => {
     setMainIsShown(shownStatus);
@@ -22,35 +23,50 @@ function App() {
   const handleResults = shownStatus => {
     setResultsShown(shownStatus);
   };
+  const handleLogin = shownStatus => {
+    setLoginShown(shownStatus);
+  };
 
   return (
     <div className="App">
       {mainIsShown &&
         <Card>
-          <MainTitle onHideThisSection={handleHide} onShowNextSection={handleShown} status={mainIsShown} />
+          <MainTitle
+            onHideThisSection={handleHide}
+            onShowNextSection={handleShown}
+            onShowLogin={handleLogin}
+            status={mainIsShown}
+          />
         </Card>
       }
 
 
-      {/* {mainIsShown && <Card><Login /></Card>} */}
+      {loginShown &&
+        <Card>
+          <Login 
+            onShowNextSection={handleShown}
+            onShowLogin={handleLogin}
+          />
+        </Card>
+      }
 
       {/* <Card>
         <Login />
       </Card> */}
 
-      {questionShown && 
-        <AllQuestion data={data} onQuizFinish={handleResults} onShowNextSection={handleShown}/>
+      {questionShown &&
+        <AllQuestion data={data} onQuizFinish={handleResults} onShowNextSection={handleShown} />
       }
-      {resultsShown && 
-      <Card>
-        <Results 
-          onHideThisSection={handleHide}
-          onQuizFinish={handleResults}
-        />
-      </Card>
+      {resultsShown &&
+        <Card>
+          <Results
+            onHideThisSection={handleHide}
+            onQuizFinish={handleResults}
+          />
+        </Card>
       }
 
-      
+
     </div>
   );
 }
