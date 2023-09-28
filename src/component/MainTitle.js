@@ -1,7 +1,16 @@
 import React from "react";
 import "./MainTitle.css"
 
-function MainTitle() {
+function MainTitle(props) {
+  console.log(props);
+  const status = props.status;
+
+  function nextSectionShown(enteredStatus) {
+    if (status == false){
+      props.onShownNextSection(true);
+    }
+  }
+
   return (
     <div className="title">
       <h1>TRIVIA TIMER QUIZ</h1>
@@ -12,7 +21,7 @@ function MainTitle() {
         <h2><a href="https://opentdb.com/" target="_blank">{'\nOpen Trivia DataBase'}</a>.</h2>
       </div>
       <div className="btn-option">
-        <button className="btn-start">Start (as Guest)</button>
+        <button className="btn-start" onClick={nextSectionShown}>Start (as Guest)</button>
         <button className="btn-start">Login</button>
       </div>
     </div>

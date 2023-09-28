@@ -1,39 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import MainTitle from './component/MainTitle';
 import Card from './component/Card';
 import Login from './component/Login';
 import Question from './component/Question';
 import qData from './assets/question.json'
+import AllQuestion from './component/AllQuestion';
 
 function App() {
   const data = qData.results;
+  const [isShown, setIsShown] = useState(false);
+
+  const handleShown = shownStatus => {
+    // 👇️ toggle shown state
+    setIsShown(shownStatus);
+
+    // 👇️ or simply set it to true
+    // setIsShown(true);
+  };
+
   return (
     <div className="App">
       <Card>
-        <MainTitle />
+        <MainTitle onShownNextSection={handleShown} status={isShown}/>
       </Card>
+
+      {isShown && <Card><Login /></Card>}
+
       <Card>
         <Login />
       </Card>
-      <Card>
-        <Question
-          id='1'
-          type={data[0].type}
-          question={data[0].question}
-          correct_answer={data[0].correct_answer}
-          incorrect_answers={data[0].incorrect_answers}
-        />
-      </Card>
-      <Card>
-        <Question
-          id='2'
-          type={data[1].type}
-          question={data[1].question}
-          correct_answer={data[1].correct_answer}
-          incorrect_answers={data[1].incorrect_answers}
-        />
-      </Card>
+      <AllQuestion data={data}/>
     </div>
   );
 }
