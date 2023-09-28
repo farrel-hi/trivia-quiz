@@ -107,7 +107,7 @@
       "category": "General Knowledge",
       "type": "boolean",
       "difficulty": "medium",
-      "question": "Sitting for more than three hours a day can cut two years off a person&#039;s life expectancy.",
+      "question": "Sitting for more than three hours a day can cut two years off a person's life expectancy.",
       "correct_answer": "True",
       "incorrect_answers": [
         "False"

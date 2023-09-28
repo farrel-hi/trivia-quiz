@@ -3,12 +3,11 @@ import "./MainTitle.css"
 
 function MainTitle(props) {
   console.log(props);
-  const status = props.status;
+  // const status = props.status;
 
-  function nextSectionShown(enteredStatus) {
-    if (status == false){
-      props.onShownNextSection(true);
-    }
+  function nextSectionShown() {
+    props.onHideThisSection(false);
+    props.onShowNextSection(true);
   }
 
   return (

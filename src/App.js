@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import MainTitle from './component/MainTitle';
 import Card from './component/Card';
@@ -9,28 +9,34 @@ import AllQuestion from './component/AllQuestion';
 
 function App() {
   const data = qData.results;
-  const [isShown, setIsShown] = useState(false);
+  const [mainIsShown, setMainIsShown] = useState(true);
+  const [questionShown, setQuestionShown] = useState(false);
 
+  const handleHide = shownStatus => {
+    setMainIsShown(shownStatus);
+  };
   const handleShown = shownStatus => {
-    // 👇️ toggle shown state
-    setIsShown(shownStatus);
-
-    // 👇️ or simply set it to true
-    // setIsShown(true);
+    setQuestionShown(shownStatus);
   };
 
   return (
     <div className="App">
-      <Card>
-        <MainTitle onShownNextSection={handleShown} status={isShown}/>
-      </Card>
+      {mainIsShown &&
+        <Card>
+          <MainTitle onHideThisSection={handleHide} onShowNextSection = {handleShown} status={mainIsShown} />
+        </Card>
+      }
 
-      {isShown && <Card><Login /></Card>}
 
-      <Card>
+      {/* {mainIsShown && <Card><Login /></Card>} */}
+
+      {/* <Card>
         <Login />
-      </Card>
-      <AllQuestion data={data}/>
+      </Card> */}
+
+      {questionShown &&  <AllQuestion data={data} />}
+
+     
     </div>
   );
 }
