@@ -61,7 +61,7 @@
       "category": "General Knowledge",
       "type": "multiple",
       "difficulty": "hard",
-      "question": "What is the romanized Korean word for &quot;heart&quot;?",
+      "question": "What is the romanized Korean word for 'heart'?",
       "correct_answer": "Simjang",
       "incorrect_answers": [
         "Aejeong",
@@ -73,7 +73,7 @@
       "category": "General Knowledge",
       "type": "multiple",
       "difficulty": "medium",
-      "question": "What is the Italian word for &quot;tomato&quot;?",
+      "question": "What is the Italian word for 'tomato'?",
       "correct_answer": "Pomodoro",
       "incorrect_answers": [
         "Aglio",
@@ -95,7 +95,7 @@
       "category": "General Knowledge",
       "type": "multiple",
       "difficulty": "medium",
-      "question": "The term &quot;scientist&quot; was coined in which year?",
+      "question": "The term 'scientist' was coined in which year?",
       "correct_answer": "1833",
       "incorrect_answers": [
         "1933",
@@ -213,7 +213,7 @@
       "category": "General Knowledge",
       "type": "multiple",
       "difficulty": "hard",
-      "question": "The word &quot;aprosexia&quot; means which of the following?",
+      "question": "The word 'aprosexia' means which of the following?",
       "correct_answer": "The inability to concentrate on anything",
       "incorrect_answers": [
         "The inability to make decisions",

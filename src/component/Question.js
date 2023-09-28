@@ -43,7 +43,7 @@ function Question(props) {
 
   function MultipleChoice() {
 
-    shuffleArray(choices); //This always runs, the options keeps on shuffling
+    // shuffleArray(choices); //This always runs, the options keeps on shuffling
     return (
       <div className="multiple-container">
         {/* <button className="choices" value={shuffledArray[0]} onClick={saveAnswerDataHandler}>{shuffledArray[0]}</button>
