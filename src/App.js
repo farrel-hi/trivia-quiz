@@ -14,7 +14,7 @@ function App() {
   const [resultsShown, setResultsShown] = useState(false);
   const [loginShown, setLoginShown] = useState(false);
 
-  const [answerData,setAnswerData] = useState([]);
+  const [answerData, setAnswerData] = useState([]);
 
   const handleHide = shownStatus => {
     setMainIsShown(shownStatus);
@@ -28,12 +28,40 @@ function App() {
   const handleLogin = shownStatus => {
     setLoginShown(shownStatus);
   };
-  const handleAnswersData = data =>{
-    const transferData = [
-      ...answerData,
-      data
-    ]
-    setAnswerData(transferData);
+  const handleAnswersData = data => {
+    console.log(answerData.length);
+    if (answerData.length >= 1) {
+      for (let i = 0; i < answerData.length; i++) {
+        //If the user wants to switch answer
+        if (answerData[i].id == data.id) {
+          console.log("koko");
+          let copyAnswer = answerData;
+          copyAnswer[i].chosenAnswer = data.chosenAnswer;
+          setAnswerData(copyAnswer);
+        }
+        //Adding the new answer to the answersData array
+        else if (i == answerData.length - 1 && answerData[i].id != data.id) {
+          console.log("kochi kochi");
+
+          let transferData = [
+            ...answerData,
+            data
+          ]
+          setAnswerData(transferData);
+        }
+      }
+    }
+    else if (answerData.length == 0) {
+      // console.log('koko');
+      let entryOne = [data];
+      setAnswerData(entryOne);
+    }
+
+    // const transferData = [
+    //   ...answerData,
+    //   data
+    // ]
+    // setAnswerData(transferData);
     console.log('In App');
     console.log(answerData);
   }
@@ -54,7 +82,7 @@ function App() {
 
       {loginShown &&
         <Card>
-          <Login 
+          <Login
             onShowNextSection={handleShown}
             onShowLogin={handleLogin}
           />
@@ -62,11 +90,11 @@ function App() {
       }
 
       {questionShown &&
-        <AllQuestion 
-        data={data} 
-        onQuizFinish={handleResults} 
-        onShowNextSection={handleShown} 
-        onUpdateAnswers={handleAnswersData}
+        <AllQuestion
+          data={data}
+          onQuizFinish={handleResults}
+          onShowNextSection={handleShown}
+          onUpdateAnswers={handleAnswersData}
         />
       }
 
