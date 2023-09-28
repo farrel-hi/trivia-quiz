@@ -11,12 +11,16 @@ function App() {
   const data = qData.results;
   const [mainIsShown, setMainIsShown] = useState(true);
   const [questionShown, setQuestionShown] = useState(false);
+  const [resultsShown, setResultsShown] = useState(false);
 
   const handleHide = shownStatus => {
     setMainIsShown(shownStatus);
   };
   const handleShown = shownStatus => {
     setQuestionShown(shownStatus);
+  };
+  const handleResults = shownStatus => {
+    setResultsShown(shownStatus);
   };
 
   return (
@@ -34,11 +38,19 @@ function App() {
         <Login />
       </Card> */}
 
-      {questionShown && <AllQuestion data={data} />}
-
+      {questionShown && 
+        <AllQuestion data={data} onQuizFinish={handleResults} onShowNextSection={handleShown}/>
+      }
+      {resultsShown && 
       <Card>
-        <Results />
+        <Results 
+          onHideThisSection={handleHide}
+          onQuizFinish={handleResults}
+        />
       </Card>
+      }
+
+      
     </div>
   );
 }

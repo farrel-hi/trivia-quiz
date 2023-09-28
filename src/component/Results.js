@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import './Results.css'
 
 
-function Results() {
+function Results(props) {
   const [resultsShown, setResultsShown] = useState(false);
-  const [textViewClose,setTextViewClose] = useState("View");
+  const [textViewClose, setTextViewClose] = useState("View");
 
 
   function AllResutls() {
@@ -37,12 +37,20 @@ function Results() {
     }
   }
 
+  function returnToHomeHandler() {
+    props.onHideThisSection(true);
+    props.onQuizFinish(false);
+  }
+
   return (
     <div className="results-container">
       <h1>You've Completed the Quiz!</h1>
       <h2>Your Results:</h2>
       <h2>$/20</h2>
-      <button className="choices" onClick={answersHandler}>{textViewClose} Answers</button>
+      <div className="after-game-option">
+        <button className="choices" onClick={answersHandler}>{textViewClose} Answers</button>
+        <button className="choices" onClick={returnToHomeHandler}>Try Again?</button>
+      </div>
 
       {resultsShown && <AllResutls />}
 

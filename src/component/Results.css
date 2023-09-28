@@ -5,3 +5,8 @@
 .results-container > * {
   margin-bottom: 10px;
 }
+
+.after-game-option{
+  display: flex;
+  justify-content: space-evenly;
+}
