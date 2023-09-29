@@ -28,7 +28,7 @@ function Results(props) {
     return (
       <div className="allResults">
         <ol>
-          <ViewOneAnswers answerObject={resultData[0]} indexPosition={0} />
+          {/* <ViewOneAnswers answerObject={resultData[0]} indexPosition={0} />
           <ViewOneAnswers answerObject={resultData[1]} indexPosition={1} />
           <ViewOneAnswers answerObject={resultData[2]} indexPosition={2} />
           <ViewOneAnswers answerObject={resultData[3]} indexPosition={3} />
@@ -47,7 +47,10 @@ function Results(props) {
           <ViewOneAnswers answerObject={resultData[16]} indexPosition={16} />
           <ViewOneAnswers answerObject={resultData[17]} indexPosition={17} />
           <ViewOneAnswers answerObject={resultData[18]} indexPosition={18} />
-          <ViewOneAnswers answerObject={resultData[19]} indexPosition={19} />
+          <ViewOneAnswers answerObject={resultData[19]} indexPosition={19} /> */}
+          {resultData.map((result, index) => (
+            <ViewOneAnswers answerObject={result} indexPosition={index} />
+          ))}
         </ol>
       </div>
     );
@@ -84,7 +87,7 @@ function Results(props) {
     <div className="results-container">
       <h1>You've Completed the Quiz!</h1>
       <h2>Your Results:</h2>
-      <h2>$/20</h2>
+      <h2>{resultData.length}/20</h2>
       <div className="after-game-option">
         <button className="choices" onClick={answersHandler}>{textViewClose} Answers</button>
         <button className="choices" onClick={returnToHomeHandler}>Try Again?</button>
