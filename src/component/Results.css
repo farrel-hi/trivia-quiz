@@ -12,5 +12,27 @@
 }
 
 ol{
-  background-color: black;
+  position: relative;
+  top:20px;
+  left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+
+ol>*{
+  margin-bottom: 10px;
+  text-align: left;
+  color: #261D51;
+  font-weight: bold;
+}
+
+li>*{
+  color: #261D51;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.allResults{
+  background-color: #5EAEFA;
+  border-radius: 20px;
 }
