@@ -16,6 +16,9 @@ function App() {
 
   const [answerData, setAnswerData] = useState([]);
 
+  const [countResults,setCountResults] = useState(0);
+
+
   const handleHide = shownStatus => {
     setMainIsShown(shownStatus);
   };
@@ -34,15 +37,12 @@ function App() {
       for (let i = 0; i < answerData.length; i++) {
         //If the user wants to switch answer
         if (answerData[i].id == data.id) {
-          console.log("koko");
           let copyAnswer = answerData;
           copyAnswer[i].chosenAnswer = data.chosenAnswer;
           setAnswerData(copyAnswer);
         }
         //Adding the new answer to the answersData array
         else if (i == answerData.length - 1 && answerData[i].id != data.id) {
-          console.log("kochi kochi");
-
           let transferData = [
             ...answerData,
             data
@@ -52,18 +52,21 @@ function App() {
       }
     }
     else if (answerData.length == 0) {
-      // console.log('koko');
       let entryOne = [data];
       setAnswerData(entryOne);
     }
-
-    // const transferData = [
-    //   ...answerData,
-    //   data
-    // ]
-    // setAnswerData(transferData);
     console.log('In App');
     console.log(answerData);
+  }
+  function countRightAnswer(){
+    for(let i=0;i<answerData.length;i++){
+      let copyCount = countResults;
+      if(answerData[i].chosenAnswer == answerData[i].correctAnswer){
+        copyCount++;
+        setCountResults(copyCount);
+      }
+    }
+    // return count;
   }
 
   return (
@@ -104,6 +107,8 @@ function App() {
           <Results
             onHideThisSection={handleHide}
             onQuizFinish={handleResults}
+            userAnswers={answerData}
+            userResults={countResults}
           />
         </Card>
       }
