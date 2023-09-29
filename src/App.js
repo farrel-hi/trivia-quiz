@@ -6,6 +6,7 @@ import Login from './component/Login';
 import Results from './component/Results';
 import qData from './assets/question.json'
 import AllQuestion from './component/AllQuestion';
+import Timer from './component/Timer';
 
 function App() {
   const data = qData.results;
@@ -13,11 +14,9 @@ function App() {
   const [questionShown, setQuestionShown] = useState(false);
   const [resultsShown, setResultsShown] = useState(false);
   const [loginShown, setLoginShown] = useState(false);
+  // const [timerShown, setTimerShown] = useState(true);
 
   const [answerData, setAnswerData] = useState([]);
-
-  const [countResults,setCountResults] = useState(0);
-
 
   const handleHide = shownStatus => {
     setMainIsShown(shownStatus);
@@ -58,19 +57,11 @@ function App() {
     console.log('In App');
     console.log(answerData);
   }
-  function countRightAnswer(){
-    for(let i=0;i<answerData.length;i++){
-      let copyCount = countResults;
-      if(answerData[i].chosenAnswer == answerData[i].correctAnswer){
-        copyCount++;
-        setCountResults(copyCount);
-      }
-    }
-    // return count;
-  }
 
   return (
     <div className="App">
+
+
       {mainIsShown &&
         <Card>
           <MainTitle
@@ -91,6 +82,13 @@ function App() {
           />
         </Card>
       }
+      
+      {questionShown && 
+        <Timer 
+          onTimerEnds={handleShown}
+          onShowResults={handleResults}
+        />
+      }
 
       {questionShown &&
         <AllQuestion
@@ -108,7 +106,6 @@ function App() {
             onHideThisSection={handleHide}
             onQuizFinish={handleResults}
             userAnswers={answerData}
-            userResults={countResults}
           />
         </Card>
       }

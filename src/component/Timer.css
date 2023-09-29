@@ -1,0 +1,8 @@
+.timer{
+  position:absolute;
+  top:3vh;
+}
+
+.countdown{
+  font-size: 60px;
+}
