@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Results.css'
 import qData from '../assets/question.json';
 import Card from "./Card";
@@ -11,43 +11,27 @@ function Results(props) {
   const resultData = props.userAnswers;
   const oriData = qData.results;
 
-  function countRightAnswer() {
-    for (let i = 0; i < resultData.length; i++) {
+  useEffect(() => {
+    function countRightAnswer() {
+      const MAX_COUNT_LIMIT = resultData.length;
       let copyCount = count;
-      if (resultData[i].chosenAnswer == resultData[i].correctAnswer) {
-        console.log("In Results");
-        copyCount++;
-        setCount(copyCount);
+      for (let i = 0; i < MAX_COUNT_LIMIT; i++) {
+        if (resultData[i].chosenAnswer === resultData[i].correctAnswer) {
+          console.log("In Results");
+          copyCount++;
+        }
       }
+      setCount(copyCount);
     }
-    // return count;
-  }
-  // countRightAnswer;
+
+    // Call the function once when the component mounts
+    countRightAnswer();
+  }, []);
 
   function AllResutls() {
     return (
       <div className="allResults">
         <ol>
-          {/* <ViewOneAnswers answerObject={resultData[0]} indexPosition={0} />
-          <ViewOneAnswers answerObject={resultData[1]} indexPosition={1} />
-          <ViewOneAnswers answerObject={resultData[2]} indexPosition={2} />
-          <ViewOneAnswers answerObject={resultData[3]} indexPosition={3} />
-          <ViewOneAnswers answerObject={resultData[4]} indexPosition={4} />
-          <ViewOneAnswers answerObject={resultData[5]} indexPosition={5} />
-          <ViewOneAnswers answerObject={resultData[6]} indexPosition={6} />
-          <ViewOneAnswers answerObject={resultData[7]} indexPosition={7} />
-          <ViewOneAnswers answerObject={resultData[8]} indexPosition={8} />
-          <ViewOneAnswers answerObject={resultData[9]} indexPosition={9} />
-          <ViewOneAnswers answerObject={resultData[10]} indexPosition={10} />
-          <ViewOneAnswers answerObject={resultData[11]} indexPosition={11} />
-          <ViewOneAnswers answerObject={resultData[12]} indexPosition={12} />
-          <ViewOneAnswers answerObject={resultData[13]} indexPosition={13} />
-          <ViewOneAnswers answerObject={resultData[14]} indexPosition={14} />
-          <ViewOneAnswers answerObject={resultData[15]} indexPosition={15} />
-          <ViewOneAnswers answerObject={resultData[16]} indexPosition={16} />
-          <ViewOneAnswers answerObject={resultData[17]} indexPosition={17} />
-          <ViewOneAnswers answerObject={resultData[18]} indexPosition={18} />
-          <ViewOneAnswers answerObject={resultData[19]} indexPosition={19} /> */}
           {resultData.map((result, index) => (
             <ViewOneAnswers answerObject={result} indexPosition={index} />
           ))}
@@ -87,7 +71,7 @@ function Results(props) {
     <div className="results-container">
       <h1>You've Completed the Quiz!</h1>
       <h2>Your Results:</h2>
-      <h2>{resultData.length}/20</h2>
+      <h2>{count}/20</h2>
       <div className="after-game-option">
         <button className="choices" onClick={answersHandler}>{textViewClose} Answers</button>
         <button className="choices" onClick={returnToHomeHandler}>Try Again?</button>
