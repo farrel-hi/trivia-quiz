@@ -7,6 +7,7 @@ function AllQuestion(props) {
   const [showQuestion, setShowQuestion] = useState(0);
   const data = props.data
 
+  // Handling Answer
   const handleAnswers = answer => {
     console.log(answer);
     const updateAnswer = { ...answer };
@@ -30,12 +31,7 @@ function AllQuestion(props) {
     );
   }
 
-  function btnPrevHandler() {
-    if (showQuestion > 0 && showQuestion <= 19) {
-      let minus = showQuestion - 1;
-      setShowQuestion(minus);
-    }
-  }
+  // When Click One of the Answers
   function btnNextHandler() {
     if (showQuestion >= 0 && showQuestion < 19) {
       let plus = showQuestion + 1;
@@ -47,29 +43,11 @@ function AllQuestion(props) {
     }
   }
 
-  //Submiting Answers -> Makes this Section Dissapear & Shown The Results
-  function saveSubmitStatus() {
-    props.onQuizFinish(true);
-    props.onShowNextSection(false);
-  }
-
   return (
     <div className="all-question-container">
       {Array.from({ length: 20 }).map((_, index) => (
         showQuestion === index && <QuestionGenerator questionNumber={index} onFirstAnswer={btnNextHandler} />
       ))}
-      {/* 
-      <div className="prev-next">
-        {showQuestion >= 1 &&
-          <button className="prev-next-btn" onClick={btnPrevHandler}>Previous</button>
-        }
-        {showQuestion <= 18 &&
-          <button className="prev-next-btn" onClick={btnNextHandler}>Next</button>
-        }
-        {showQuestion == 19 &&
-          <button className="prev-next-btn" onClick={saveSubmitStatus}>Submit</button>
-        }
-      </div> */}
     </div>
   );
 }
