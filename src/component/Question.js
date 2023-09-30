@@ -12,9 +12,12 @@ function Question(props) {
     chosenAnswer: '',
     correctAnswer: correct_answer
   }
+  // const newChoices = shuffleArray(choices);
 
-  const [answerProperty, setAnswerProperty] = useState({});
-  const [shuffledArray, setShuffledArray] = useState([]);
+  // const [answerProperty, setAnswerProperty] = useState({});
+  const [shuffledArray, setShuffledArray] = useState(shuffleArray(choices));
+  // const [num]
+  // const [shuffleState, setShuffleState] = useState("NotShuffle");
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -27,34 +30,50 @@ function Question(props) {
     //   [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     // }
     // return newArray
+    return array
   }
 
   // useEffect(() => {
+  //   console.log("kokokokokokokoko");
   //   // Step 3: Store the shuffled array in state when the component mounts
-  //   setShuffledArray(shuffleArray(choices));
+  //   if(shuffleState == "NotShuffle"){
+  //     const newChoices = shuffleArray(choices);
+      
+  //     setShuffledArray(newChoices);
+  //     // setShuffledArray(shuffleArray(choices));
+  //     setShuffleState("Shuffled");
+  //   }
   // }, []);
 
+  // const changeBtnColor = btnNum =>{
+  //   if()
+
+  // }
+
   const saveAnswerDataHandler = event => {
-    console.log(event.target.value);
     answer.chosenAnswer = event.target.value;
-    console.log(answer);
+    console.log(event.target);
     props.onHandleAnswers(answer);
+    props.onFirstClick();
   }
 
   function MultipleChoice() {
-
-    // shuffleArray(choices); //This always runs, the options keeps on shuffling
     return (
       <div className="multiple-container">
-        {/* <button className="choices" value={shuffledArray[0]} onClick={saveAnswerDataHandler}>{shuffledArray[0]}</button>
-        <button className="choices" value={shuffledArray[1]} onClick={saveAnswerDataHandler}>{shuffledArray[1]}</button>
-        <button className="choices" value={shuffledArray[2]} onClick={saveAnswerDataHandler}>{shuffledArray[2]}</button>
-        <button className="choices" value={shuffledArray[3]} onClick={saveAnswerDataHandler}>{shuffledArray[3]}</button> */}
-
-        <button className="choices" value={choices[0]} onClick={saveAnswerDataHandler}>{choices[0]}</button>
+        {/* <button className="choices" value={choices[0]} onClick={saveAnswerDataHandler}>{choices[0]}</button>
         <button className="choices" value={choices[1]} onClick={saveAnswerDataHandler}>{choices[1]}</button>
         <button className="choices" value={choices[2]} onClick={saveAnswerDataHandler}>{choices[2]}</button>
-        <button className="choices" value={choices[3]} onClick={saveAnswerDataHandler}>{choices[3]}</button>
+        <button className="choices" value={choices[3]} onClick={saveAnswerDataHandler}>{choices[3]}</button> */}
+        
+        <button className="choices" value={shuffledArray[0]} onClick={saveAnswerDataHandler}>{shuffledArray[0]}</button>
+        <button className="choices" value={shuffledArray[1]} onClick={saveAnswerDataHandler}>{shuffledArray[1]}</button>
+        <button className="choices" value={shuffledArray[2]} onClick={saveAnswerDataHandler}>{shuffledArray[2]}</button>
+        <button className="choices" value={shuffledArray[3]} onClick={saveAnswerDataHandler}>{shuffledArray[3]}</button>
+        
+        {/* <button className="choices" value={newChoices[0]} onClick={saveAnswerDataHandler}>{newChoices[0]}</button>
+        <button className="choices" value={newChoices[1]} onClick={saveAnswerDataHandler}>{newChoices[1]}</button>
+        <button className="choices" value={newChoices[2]} onClick={saveAnswerDataHandler}>{newChoices[2]}</button>
+        <button className="choices" value={newChoices[3]} onClick={saveAnswerDataHandler}>{newChoices[3]}</button> */}
       </div>
     )
   }

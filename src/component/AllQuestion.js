@@ -5,16 +5,11 @@ import Card from "./Card";
 
 function AllQuestion(props) {
   const [showQuestion, setShowQuestion] = useState(0);
-  // const [answerArr, setAnswerArr] = useState([]);
   const data = props.data
 
   const handleAnswers = answer => {
     console.log(answer);
-    const updateAnswer = {...answer};
-    // setAnswerArr({
-    //   ...answerArr,
-    //   answer
-    // })
+    const updateAnswer = { ...answer };
     props.onUpdateAnswers(updateAnswer)
   }
 
@@ -29,6 +24,7 @@ function AllQuestion(props) {
           correct_answer={data[qNum].correct_answer}
           incorrect_answers={data[qNum].incorrect_answers}
           onHandleAnswers={handleAnswers}
+          onFirstClick={property.onFirstAnswer}
         />
       </Card>
     );
@@ -45,39 +41,26 @@ function AllQuestion(props) {
       let plus = showQuestion + 1;
       setShowQuestion(plus);
     }
+    else {
+      props.onQuizFinish(true);
+      props.onShowNextSection(false);
+    }
   }
 
   //Submiting Answers -> Makes this Section Dissapear & Shown The Results
-  function saveSubmitStatus(){
+  function saveSubmitStatus() {
     props.onQuizFinish(true);
     props.onShowNextSection(false);
   }
 
   return (
     <div className="all-question-container">
-      {showQuestion == 0 && <QuestionGenerator questionNumber={0} />}
-      {showQuestion == 1 && <QuestionGenerator questionNumber={1} />}
-      {showQuestion == 2 && <QuestionGenerator questionNumber={2} />}
-      {showQuestion == 3 && <QuestionGenerator questionNumber={3} />}
-      {showQuestion == 4 && <QuestionGenerator questionNumber={4} />}
-      {showQuestion == 5 && <QuestionGenerator questionNumber={5} />}
-      {showQuestion == 6 && <QuestionGenerator questionNumber={6} />}
-      {showQuestion == 7 && <QuestionGenerator questionNumber={7} />}
-      {showQuestion == 8 && <QuestionGenerator questionNumber={8} />}
-      {showQuestion == 9 && <QuestionGenerator questionNumber={9} />}
-      {showQuestion == 10 && <QuestionGenerator questionNumber={10} />}
-      {showQuestion == 11 && <QuestionGenerator questionNumber={11} />}
-      {showQuestion == 12 && <QuestionGenerator questionNumber={12} />}
-      {showQuestion == 13 && <QuestionGenerator questionNumber={13} />}
-      {showQuestion == 14 && <QuestionGenerator questionNumber={14} />}
-      {showQuestion == 15 && <QuestionGenerator questionNumber={15} />}
-      {showQuestion == 16 && <QuestionGenerator questionNumber={16} />}
-      {showQuestion == 17 && <QuestionGenerator questionNumber={17} />}
-      {showQuestion == 18 && <QuestionGenerator questionNumber={18} />}
-      {showQuestion == 19 && <QuestionGenerator questionNumber={19} />}
-
+      {Array.from({ length: 20 }).map((_, index) => (
+        showQuestion === index && <QuestionGenerator questionNumber={index} onFirstAnswer={btnNextHandler} />
+      ))}
+      {/* 
       <div className="prev-next">
-        {showQuestion >= 1 && 
+        {showQuestion >= 1 &&
           <button className="prev-next-btn" onClick={btnPrevHandler}>Previous</button>
         }
         {showQuestion <= 18 &&
@@ -86,7 +69,7 @@ function AllQuestion(props) {
         {showQuestion == 19 &&
           <button className="prev-next-btn" onClick={saveSubmitStatus}>Submit</button>
         }
-      </div>
+      </div> */}
     </div>
   );
 }
