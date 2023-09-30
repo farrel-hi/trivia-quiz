@@ -24,8 +24,8 @@ function MainTitle(props) {
         <h2><a href="https://opentdb.com/" target="_blank">{'\nOpen Trivia DataBase'}</a>.</h2>
       </div>
       <div className="btn-option">
-        <button className="btn-start" onClick={nextSectionShown}>Start (as Guest)</button>
-        <button className="btn-start" onClick={showSectionLogin}>Login</button>
+        <button className="btn-start" onClick={nextSectionShown}>Start <br />(as Guest)</button>
+        <button className="btn-start" onClick={showSectionLogin}>Login <br />(use Custom Name)</button>
       </div>
     </div>
   );

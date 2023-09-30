@@ -18,7 +18,8 @@ h2 > a{
 
 .btn-start {
   min-width: 130px;
-  height: 40px;
+  height: 70px;
+  /* height: 40px; */
   color: #fff;
   padding: 5px 10px;
   font-size: 20px;

@@ -7,6 +7,7 @@ import Results from './component/Results';
 import qData from './assets/question.json'
 import AllQuestion from './component/AllQuestion';
 import Timer from './component/Timer';
+import UserName from './component/UserName';
 
 function App() {
   const data = qData.results;
@@ -15,6 +16,7 @@ function App() {
   const [resultsShown, setResultsShown] = useState(false);
   const [loginShown, setLoginShown] = useState(false);
   // const [timerShown, setTimerShown] = useState(true);
+  const [userName, setUserName] = useState("Guest");
 
   const [answerData, setAnswerData] = useState([]);
 
@@ -30,9 +32,12 @@ function App() {
   const handleLogin = shownStatus => {
     setLoginShown(shownStatus);
   };
+  const handleUserName = changeName => {
+    setUserName(changeName);
+  };
   const resetAnswer = emptyArray =>{
     setAnswerData(emptyArray);
-  }
+  };
   const handleAnswersData = data => {
     console.log(answerData.length);
     if (answerData.length >= 1) {
@@ -63,7 +68,9 @@ function App() {
 
   return (
     <div className="App">
-
+      <UserName
+        name={userName}
+      />
 
       {mainIsShown &&
         <Card>
@@ -82,6 +89,7 @@ function App() {
           <Login
             onShowNextSection={handleShown}
             onShowLogin={handleLogin}
+            onChangeName={handleUserName}
           />
         </Card>
       }
