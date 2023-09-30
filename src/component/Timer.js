@@ -3,7 +3,7 @@ import './Timer.css';
 
 
 function Timer(props) {
-  const [counter, setCounter] = useState(10);
+  const [counter, setCounter] = useState(600);
   const [minutes, setMinutes] = useState(10);
   const [seconds, setSeconds] = useState(0);
   useEffect(() => {
