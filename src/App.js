@@ -30,6 +30,9 @@ function App() {
   const handleLogin = shownStatus => {
     setLoginShown(shownStatus);
   };
+  const resetAnswer = emptyArray =>{
+    setAnswerData(emptyArray);
+  }
   const handleAnswersData = data => {
     console.log(answerData.length);
     if (answerData.length >= 1) {
@@ -106,6 +109,7 @@ function App() {
             onHideThisSection={handleHide}
             onQuizFinish={handleResults}
             userAnswers={answerData}
+            onTryAgain={resetAnswer}
           />
         </Card>
       }

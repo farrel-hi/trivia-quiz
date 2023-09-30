@@ -11,13 +11,13 @@ function Results(props) {
   const resultData = props.userAnswers;
   const oriData = qData.results;
 
+  // Check how many Right Answers
   useEffect(() => {
     function countRightAnswer() {
       const MAX_COUNT_LIMIT = resultData.length;
       let copyCount = count;
       for (let i = 0; i < MAX_COUNT_LIMIT; i++) {
         if (resultData[i].chosenAnswer === resultData[i].correctAnswer) {
-          console.log("In Results");
           copyCount++;
         }
       }
@@ -63,6 +63,7 @@ function Results(props) {
   }
 
   function returnToHomeHandler() {
+    props.onTryAgain([])
     props.onHideThisSection(true);
     props.onQuizFinish(false);
   }
