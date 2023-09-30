@@ -3,6 +3,7 @@ import "./MainTitle.css"
 
 function MainTitle(props) {
   function nextSectionShown() {
+    props.onChangeName('Guest');
     props.onHideThisSection(false);
     props.onShowNextSection(true);
   }

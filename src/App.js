@@ -78,6 +78,7 @@ function App() {
             onShowNextSection={handleShown}
             onShowLogin={handleLogin}
             status={mainIsShown}
+            onChangeName={handleUserName}
           />
         </Card>
       }
