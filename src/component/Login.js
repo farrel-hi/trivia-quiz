@@ -1,9 +1,7 @@
 import React from "react";
 import './Login.css';
 
-
 function Login(props) {
-
   const saveUserData = event => {
     console.log('In Login');
     console.log(event);
@@ -16,7 +14,6 @@ function Login(props) {
     <form className="login" onSubmit={saveUserData}>
       <h1>LOGIN</h1>
       <input className="input-login" type="text" placeholder="Username" />
-      {/* <input className="input-login" type="password" placeholder="Password" /> */}
       <button className="choices" type="submit">Submit</button>
     </form>
   );

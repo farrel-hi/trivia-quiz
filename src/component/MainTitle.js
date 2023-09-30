@@ -2,9 +2,6 @@ import React from "react";
 import "./MainTitle.css"
 
 function MainTitle(props) {
-  console.log(props);
-  // const status = props.status;
-
   function nextSectionShown() {
     props.onHideThisSection(false);
     props.onShowNextSection(true);
